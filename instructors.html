@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>講師紹介 - Medistudy | 医学科コーチと学ぶ場所</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #ffffff;
+      --sand: #f5f1ed;
+      --mint: #8ab4a7;
+      --navy: #2c3e50;
+      --gold: #d4af37;
+      --text-dark: #333333;
+      --text-light: #666666;
+      --text-lighter: #999999;
+    }
+
+    body {
+      font-family: 'Noto Serif JP', serif;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background-color: var(--white);
+    }
+
+    .en-font {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--mint);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--mint);
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 150px 0 100px;
+      background: linear-gradient(rgba(245, 241, 237, 0.8), rgba(245, 241, 237, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .page-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--mint);
+      letter-spacing: 4px;
+      font-weight: 300;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 100px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Philosophy Section */
+    .philosophy {
+      background-color: var(--sand);
+      text-align: center;
+    }
+
+    .philosophy-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .philosophy h2 {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .philosophy p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 2.2;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    .philosophy-highlight {
+      font-size: 18px;
+      color: var(--mint);
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-top: 40px;
+    }
+
+    /* Main Instructors Grid */
+    .instructors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 80px;
+      margin-top: 80px;
+    }
+
+    .instructor-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+    }
+
+    .instructor-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    .instructor-image {
+      height: 280px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .instructor-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--mint);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .instructor-content {
+      padding: 40px 35px;
+    }
+
+    .instructor-name {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    .instructor-title {
+      font-size: 14px;
+      color: var(--mint);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    .instructor-info {
+      margin-bottom: 25px;
+    }
+
+    .info-item {
+      display: flex;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .info-label {
+      color: var(--text-lighter);
+      width: 80px;
+      flex-shrink: 0;
+    }
+
+    .info-value {
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .instructor-description {
+      font-size: 15px;
+      color: var(--text-light);
+      line-height: 1.9;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .instructor-quote {
+      background: var(--sand);
+      padding: 25px;
+      border-radius: 4px;
+      border-left: 4px solid var(--mint);
+      font-style: italic;
+      color: var(--text-dark);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* Director Section */
+    .director-section {
+      background: var(--sand);
+    }
+
+    .director-card {
+      display: grid;
+      grid-template-columns: 350px 1fr;
+      gap: 60px;
+      align-items: center;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .director-image {
+      height: 400px;
+      background: url('img/Ishiyama.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .director-content {
+      padding: 40px 60px 40px 0;
+    }
+
+    .director-name {
+      font-size: 32px;
+      font-weight: 400;
+      margin-bottom: 10px;
+      letter-spacing: 2px;
+    }
+
+    .director-title {
+      font-size: 16px;
+      color: var(--mint);
+      margin-bottom: 30px;
+      letter-spacing: 3px;
+      font-weight: 300;
+    }
+
+    .director-description {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 2;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .director-philosophy {
+      background: var(--sand);
+      padding: 30px;
+      border-radius: 4px;
+      border-left: 4px solid var(--mint);
+      font-size: 15px;
+      line-height: 2;
+      color: var(--text-dark);
+    }
+
+    /* Standards Section */
+    .standards {
+      text-align: center;
+    }
+
+    .standards h2 {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 50px;
+      letter-spacing: 2px;
+    }
+
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 50px;
+      margin-top: 60px;
+    }
+
+    .standard-item {
+      padding: 40px 30px;
+      background: var(--white);
+      border: 1px solid rgba(138, 180, 167, 0.2);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .standard-item:hover {
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px);
+    }
+
+    .standard-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--mint);
+      border-radius: 50%;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--white);
+    }
+
+    .standard-title {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .standard-description {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(135deg, var(--mint), rgba(138, 180, 167, 0.8));
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .cta-description {
+      font-size: 16px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 18px 50px;
+      background: var(--white);
+      color: var(--mint);
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .footer-section a:hover {
+      color: var(--mint);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+
+      .director-card {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      .director-content {
+        padding: 40px 30px;
+      }
+
+      .instructors-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo en-font">Medistudy</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="#" class="active">講師紹介</a></li>
+          <li><a href="services.html">サービス</a></li>
+          <li><a href="pricing.html">料金・プラン</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="entry.html">入塾の流れ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title fade-in">講師紹介</h1>
+      <p class="page-subtitle en-font fade-in">INSTRUCTORS</p>
+    </div>
+  </section>
+
+  <!-- Philosophy Section -->
+  <section class="section philosophy">
+    <div class="container">
+      <div class="philosophy-content fade-in">
+        <h2>医学科コーチとしての想い</h2>
+        <p>
+          私たちは「教えすぎない」ことを大切にしています。
+          答えを与えるのではなく、考える力を引き出す。
+          一人ひとりの可能性を信じ、丁寧に伴走していく。
+        </p>
+        <p>
+          医学部という目標に向かう中で培った学習法や思考法を、
+          あなたの成長に活かしていただきたい。
+          そんな想いで、日々指導にあたっています。
+        </p>
+        <p class="philosophy-highlight">
+          「教えない・引き出す」コーチングで、あなたらしい学びを。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Director Section -->
+  <section class="section director-section">
+    <div class="container">
+      <div class="director-card fade-in">
+        <div class="director-image"></div>
+        <div class="director-content">
+          <h2 class="director-name">石山 神</h2>
+          <p class="director-title">塾長・メインコーチ</p>
+          <p class="director-description">
+            広島大学法学部法学科在籍。二浪を経て、偏差値40台から85まで伸ばした。
+            成績が伸びない根本原因を自己分析によって可視化し、「どうすれば伸びるのか」を徹底的に考え抜いた末、
+            自らに合った学習法と習慣を構築し、志望校合格を実現。
+          </p>
+          <div class="director-philosophy">
+            「すべての生徒が"自分だけの変化"を起こせる場所。
+            失敗と成功から学ぶ"正しい努力"の本質をお伝えします。
+            教育は自走力と考える力を引き出すもの、という信念を持って指導にあたっています。」
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Instructors -->
+  <section class="section">
+    <div class="container">
+      <div class="instructors-grid">
+        <!-- 宗像桃華 -->
+        <div class="instructor-card fade-in">
+          <div class="instructor-image" style="background-image: url('img/munakata.jpg')">
+            <div class="instructor-badge">化学・物理・英語</div>
+          </div>
+          <div class="instructor-content">
+            <h3 class="instructor-name">宗像 桃華</h3>
+            <p class="instructor-title">広島大学医学部医学科</p>
+            <div class="instructor-info">
+              <div class="info-item">
+                <span class="info-label">出身：</span>
+                <span class="info-value">広島県広島市</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">経歴：</span>
+                <span class="info-value">広大附属中高 / バスケ部・軽音部</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">専門：</span>
+                <span class="info-value">化学・物理・英語</span>
+              </div>
+            </div>
+            <p class="instructor-description">
+              6年間のバスケット部と軽音部活動を並行しながら、
+              浪人期に自分に合った学習法を発見し医学部合格。
+              特に「朝勉の習慣化」と「自分だけの学習スタイル」発見のプロ。
+            </p>
+            <div class="instructor-quote">
+              「部活も勉強も全力で頑張ったからこそ、朝勉の習慣や"オンリーワンの学習法"に出会えました。
+              あなたにもその近道を見つけてほしいです！」
+            </div>
+          </div>
+        </div>
+
+        <!-- 良宇都那玲主 -->
+        <div class="instructor-card fade-in">
+          <div class="instructor-image" style="background-image: url('img/naresu.jpg')">
+            <div class="instructor-badge">古典以外全般</div>
+          </div>
+          <div class="instructor-content">
+            <h3 class="instructor-name">良宇都 那玲主</h3>
+            <p class="instructor-title">広島大学医学部医学科</p>
+            <div class="instructor-info">
+              <div class="info-item">
+                <span class="info-label">出身：</span>
+                <span class="info-value">大阪府枚方市</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">経歴：</span>
+                <span class="info-value">東大寺学園 / 剣道部</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">専門：</span>
+                <span class="info-value">数学・理科全般</span>
+              </div>
+            </div>
+            <p class="instructor-description">
+              広島大学医学部を2位で合格。個別指導経験60人以上。
+              「学習は将来の自分への投資」という理念のもと、
+              再現性の高い勉強法の重要性を伝える。
+            </p>
+            <div class="instructor-quote">
+              「努力量は才能を凌駕します。"自分なりの積み重ね"が最強の武器です。
+              一緒に、あなただけの学習戦略を見つけていきましょう。」
+            </div>
+          </div>
+        </div>
+
+        <!-- 加藤朋 -->
+        <div class="instructor-card fade-in">
+          <div class="instructor-image" style="background-image: url('img/katou.jpg')">
+            <div class="instructor-badge">英・数・化・物</div>
+          </div>
+          <div class="instructor-content">
+            <h3 class="instructor-name">加藤 朋</h3>
+            <p class="instructor-title">広島大学医学部医学科</p>
+            <div class="instructor-info">
+              <div class="info-item">
+                <span class="info-label">出身：</span>
+                <span class="info-value">大阪府</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">経歴：</span>
+                <span class="info-value">大阪公立高校 / サッカー部</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">専門：</span>
+                <span class="info-value">英数物化</span>
+              </div>
+            </div>
+            <p class="instructor-description">
+              中堅公立高校出身。浪人期に恩師の影響で勉強法を見直し、
+              成績を大幅に向上させて合格。
+              「再現性の高い解法」を重視した指導を行う。
+            </p>
+            <div class="instructor-quote">
+              「"たまたま解けた"を"何度でも解ける"に変えていきましょう。
+              効率よりも本質を大切に、一緒に成長していけたらと思います。」
+            </div>
+          </div>
+        </div>
+
+        <!-- 石川大樹 -->
+        <div class="instructor-card fade-in">
+          <div class="instructor-image" style="background-image: url('img/d.ishikawa.jpg')">
+            <div class="instructor-badge">英語専門</div>
+          </div>
+          <div class="instructor-content">
+            <h3 class="instructor-name">石川 大樹</h3>
+            <p class="instructor-title">広島大学医学部医学科</p>
+            <div class="instructor-info">
+              <div class="info-item">
+                <span class="info-label">出身：</span>
+                <span class="info-value">広島県広島市</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">経歴：</span>
+                <span class="info-value">広島学院 / 野球部・書道部・生徒会</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">専門：</span>
+                <span class="info-value">英語</span>
+              </div>
+            </div>
+            <p class="instructor-description">
+              野球部、書道部、生徒会など幅広い経験を持つ。
+              受験を通じて「頭で考え抜く」ことの重要性を実感。
+              自己分析の大切さを生徒に伝える。
+            </p>
+            <div class="instructor-quote">
+              「困った時こそ"なぜ"と自分に問いかけましょう。
+              考え抜く力があれば、道は必ず開けます！」
+            </div>
+          </div>
+        </div>
+
+        <!-- 長谷隼太郎 -->
+        <div class="instructor-card fade-in">
+          <div class="instructor-image" style="background-image: url('img/hase.jpg')">
+            <div class="instructor-badge">数・物・化</div>
+          </div>
+          <div class="instructor-content">
+            <h3 class="instructor-name">長谷 隼太郎</h3>
+            <p class="instructor-title">広島大学医学部医学科</p>
+            <div class="instructor-info">
+              <div class="info-item">
+                <span class="info-label">出身：</span>
+                <span class="info-value">神奈川県横浜市</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">経歴：</span>
+                <span class="info-value">横浜翠嵐高校 / 野球部・フットサル部</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">専門：</span>
+                <span class="info-value">数学・物理・化学</span>
+              </div>
+            </div>
+            <p class="instructor-description">
+              浪人を経験し、「理解の深さ」と「毎日の積み重ね」の重要性を実感。
+              野球で培った継続力を学習にも活かす指導を行う。
+            </p>
+            <div class="instructor-quote">
+              「毎日小さな一歩でも続ければ、必ず大きな成果につながります。
+              一緒に、続けられる学習習慣を作っていきましょう。」
+            </div>
+          </div>
+        </div>
+
+        <!-- 石川こひめ -->
+        <div class="instructor-card fade-in">
+          <div class="instructor-image" style="background-image: url('img/Ishikawa.jpg')">
+            <div class="instructor-badge">生・化・数</div>
+          </div>
+          <div class="instructor-content">
+            <h3 class="instructor-name">石川 こひめ</h3>
+            <p class="instructor-title">広島大学医学部医学科</p>
+            <div class="instructor-info">
+              <div class="info-item">
+                <span class="info-label">出身：</span>
+                <span class="info-value">広島県</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">経歴：</span>
+                <span class="info-value">広大附属中高 / 管弦楽班・SSH研究</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">専門：</span>
+                <span class="info-value">生物・化学・数学</span>
+              </div>
+            </div>
+            <p class="instructor-description">
+              SSH科学研究で特選を受賞。管弦楽班にも所属し、多忙な中で
+              「限られた時間で最大効果」を追求した学習法を確立。
+            </p>
+            <div class="instructor-quote">
+              「"忙しい"は武器になります。限られた時間を賢く使えば、
+              現役合格も夢じゃない！一緒に効率的な学習法を見つけましょう。」
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Standards Section -->
+  <section class="section standards">
+    <div class="container">
+      <h2 class="fade-in">私たちの指導基準</h2>
+      <div class="standards-grid">
+        <div class="standard-item fade-in">
+          <div class="standard-icon">🧠</div>
+          <h3 class="standard-title">思考力を鍛える</h3>
+          <p class="standard-description">
+            答えを「覚える」から「導く」へ。
+            考える力を引き出す問いかけを大切にし、
+            本質的な理解を促します。
+          </p>
+        </div>
+        <div class="standard-item fade-in">
+          <div class="standard-icon">🚀</div>
+          <h3 class="standard-title">自走力を育てる</h3>
+          <p class="standard-description">
+            自ら学ぶ力と継続する力を育成。
+            指導を受けなくても成長し続けられる
+            自立した学習者を目指します。
+          </p>
+        </div>
+        <div class="standard-item fade-in">
+          <div class="standard-icon">👥</div>
+          <h3 class="standard-title">一人ひとりに寄り添う</h3>
+          <p class="standard-description">
+            学力も個性も全員違うからこそ、
+            完全個別最適化の指導を実現。
+            あなたらしい成長をサポートします。
+          </p>
+        </div>
+        <div class="standard-item fade-in">
+          <div class="standard-icon">⭐</div>
+          <h3 class="standard-title">結果にコミットする</h3>
+          <p class="standard-description">
+            目標達成まで責任を持って伴走。
+            最後まで諦めず、必ず結果を
+            出せるよう全力でサポートします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta">
+    <div class="container">
+      <div class="fade-in">
+        <h2 class="cta-title">講師と直接話してみませんか？</h2>
+        <p class="cta-description">
+          無料体験では、実際に講師とお話しいただけます。<br>
+          あなたに合った学習法を一緒に見つけましょう。
+        </p>
+        <a href="#" class="cta-button">無料体験を申し込む</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="en-font">Medistudy</h4>
+          <p>
+            毎日通える、"医学科コーチ"と学ぶ場所。<br>
+            あなたの可能性を、静かに、確実に、引き出します。
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>アクセス</h4>
+          <p>
+            〒730-0044<br>
+            広島県広島市中区宝町4-29第一小林ビル202<br>
+            TEL: 080-3886-1480<br>
+            営業時間: 9:00-22:00（年中無休）
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>お問い合わせ</h4>
+          <p>
+            <a href="https://lin.ee/GQDsqfQ">LINE公式アカウント</a><br>
+            <a href="https://www.instagram.com/medizero0101/">Instagram</a><br>
+            <a href="faq.html #form">お問い合わせフォーム</a><br>
+            <a href="faq.html #access">アクセス</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Medistudy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Fade in animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Header background change on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+      }
+    });
+  </script>
+</body>
+</html>

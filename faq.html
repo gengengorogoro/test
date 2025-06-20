@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>アクセス・お問い合わせ - Medistudy | 医学科コーチと学ぶ場所</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #ffffff;
+      --sand: #f5f1ed;
+      --mint: #8ab4a7;
+      --navy: #2c3e50;
+      --gold: #d4af37;
+      --text-dark: #333333;
+      --text-light: #666666;
+      --text-lighter: #999999;
+    }
+
+    body {
+      font-family: 'Noto Serif JP', serif;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background-color: var(--white);
+    }
+
+    .en-font {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--mint);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--mint);
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 150px 0 100px;
+      background: linear-gradient(rgba(245, 241, 237, 0.8), rgba(245, 241, 237, 0.8)), url('https://images.unsplash.com/photo-1497486751825-1233686d5d80?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .page-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--mint);
+      letter-spacing: 4px;
+      font-weight: 300;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 100px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Access Section */
+    .access-section {
+      background-color: var(--sand);
+    }
+
+    .access-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .access-info {
+      padding: 40px 0;
+    }
+
+    .access-info h2 {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .location-details {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
+
+    .detail-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding: 15px 0;
+      border-bottom: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .detail-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--mint);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 20px;
+      flex-shrink: 0;
+      font-size: 16px;
+      color: var(--white);
+    }
+
+    .detail-content h4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+
+    .detail-content p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .access-description {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 2;
+      margin-bottom: 30px;
+      font-weight: 300;
+    }
+
+    .transportation {
+      background: var(--white);
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .transportation h3 {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      color: var(--mint);
+    }
+
+    .transport-item {
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .map-container {
+      height: 500px;
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .map-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--sand) 25%, transparent 25%), 
+                  linear-gradient(-45deg, var(--sand) 25%, transparent 25%), 
+                  linear-gradient(45deg, transparent 75%, var(--sand) 75%), 
+                  linear-gradient(-45deg, transparent 75%, var(--sand) 75%);
+      background-size: 20px 20px;
+      background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--text-light);
+    }
+
+    /* Contact Methods */
+    .contact-methods {
+      padding: 120px 0;
+    }
+
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    .method-card {
+      background: var(--white);
+      padding: 50px 40px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s ease;
+    }
+
+    .method-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    .method-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--mint);
+      border-radius: 50%;
+      margin: 0 auto 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      color: var(--white);
+    }
+
+    .method-title {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .method-description {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    .method-detail {
+      font-size: 16px;
+      color: var(--mint);
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+
+    .method-hours {
+      font-size: 12px;
+      color: var(--text-lighter);
+      margin-bottom: 30px;
+    }
+
+    .method-button {
+      display: inline-block;
+      padding: 12px 30px;
+      background: var(--mint);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .method-button:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+    }
+
+    /* Contact Form */
+    .contact-form-section {
+      background: var(--sand);
+    }
+
+    .form-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 60px 50px;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .form-title {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 300;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+    }
+
+    .form-group {
+      margin-bottom: 30px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+    }
+
+    .required {
+      color: var(--mint);
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      padding: 15px 20px;
+      border: 2px solid rgba(138, 180, 167, 0.2);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Noto Serif JP', serif;
+      background: var(--white);
+      transition: border-color 0.3s ease;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: var(--mint);
+    }
+
+    .form-textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+    }
+
+    .checkbox-group input[type="checkbox"] {
+      margin-right: 10px;
+      transform: scale(1.2);
+    }
+
+    .checkbox-group label {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .submit-button {
+      width: 100%;
+      padding: 18px 30px;
+      background: var(--mint);
+      color: var(--white);
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+    }
+
+    .submit-button:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Hours Section */
+    .hours-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .hours-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .hours-card {
+      background: var(--white);
+      padding: 40px 30px;
+      border-radius: 8px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .hours-title {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      color: var(--mint);
+    }
+
+    .hours-list {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 2;
+      font-weight: 300;
+    }
+
+    .special-note {
+      background: rgba(138, 180, 167, 0.1);
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 40px;
+      text-align: center;
+    }
+
+    .special-note h3 {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+      color: var(--mint);
+    }
+
+    .special-note p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .footer-section a:hover {
+      color: var(--mint);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+
+      .access-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .form-container {
+        padding: 40px 30px;
+        margin: 0 20px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo en-font">Medistudy</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="services.html">サービス</a></li>
+          <li><a href="pricing.html">料金・プラン</a></li>
+          <li><a href="#" class="active">FAQ</a></li>
+          <li><a href="entry.html">入塾の流れ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title fade-in">アクセス・お問い合わせ</h1>
+      <p class="page-subtitle en-font fade-in">ACCESS & CONTACT</p>
+    </div>
+  </section>
+
+  <!-- Access Section -->
+  <section class="section access-section" id="access">
+    <div class="container">
+      <div class="access-content">
+        <div class="access-info fade-in">
+          <h2>教室へのアクセス</h2>
+          <p class="access-description">
+            広島市中区の便利な立地に位置するMedistudy。
+            公共交通機関でのアクセスも良好で、
+            通学しやすい環境を整えています。
+          </p>
+          
+          <div class="location-details">
+            <div class="detail-item">
+              <div class="detail-icon">📍</div>
+              <div class="detail-content">
+                <h4>住所</h4>
+                <p>〒730-0044<br>広島県広島市中区宝町4-29<br>第一小林ビル 202</p>
+              </div>
+            </div>
+            
+            <div class="detail-item">
+              <div class="detail-icon">📞</div>
+              <div class="detail-content">
+                <h4>電話番号</h4>
+                <p>080-3886-1480</p>
+              </div>
+            </div>
+            
+            <div class="detail-item">
+              <div class="detail-icon">✉️</div>
+              <div class="detail-content">
+                <h4>メールアドレス</h4>
+                <p>jinishiyama1216@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="detail-item">
+              <div class="detail-icon">🚗</div>
+              <div class="detail-content">
+                <h4>駐車場</h4>
+                <p>近隣のコインパーキングをご利用ください<br>（提携割引あり）</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="transportation">
+            <h3>交通アクセス</h3>
+            <div class="transport-item">
+              広島駅よりバスで10分
+            </div>
+            <div class="transport-item">
+              市電比治山橋駅から徒歩10分
+            </div>
+          </div>
+        </div>
+        
+        <div class="map-container fade-in">
+          <div class="map-placeholder">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3292.5963672330786!2d132.46077157603116!3d34.386184873032995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x355aa306f57ba44b%3A0x3cc48f67adb8ad47!2z56ysMeWwj-ael-ODk-ODqw!5e0!3m2!1sja!2sjp!4v1750383583644!5m2!1sja!2sjp" width="600" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Methods -->
+  <section class="section contact-methods">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="text-align: center; font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">お問い合わせ方法</h2>
+        <p style="text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300; margin-bottom: 40px;">CONTACT METHODS</p>
+        <p style="text-align: center; font-size: 16px; color: var(--text-light); line-height: 2; font-weight: 300; max-width: 600px; margin: 0 auto;">
+          お気軽にお問い合わせください。<br>
+          無料体験のご予約やご質問など、どんなことでも承ります。
+        </p>
+      </div>
+      
+      <div class="methods-grid">
+        <div class="method-card fade-in">
+          <div class="method-icon">📞</div>
+          <h3 class="method-title">お電話</h3>
+          <p class="method-description">
+            直接お話しいただける、最も確実な方法です。
+            無料体験の予約や詳しいご相談にも対応いたします。
+          </p>
+          <div class="method-detail">080-3886-1480</div>
+          <div class="method-hours">受付時間：9:00-22:00（年中無休）</div>
+          <a href="tel:082-555-0123" class="method-button">今すぐ電話する</a>
+        </div>
+
+        <div class="method-card fade-in">
+          <div class="method-icon">💬</div>
+          <h3 class="method-title">LINE</h3>
+          <p class="method-description">
+            最も気軽にお問い合わせいただける方法です。
+          </p>
+          <div class="method-detail">@medistudy-hiroshima</div>
+          <div class="method-hours">24時間受付・通常1時間以内に返信</div>
+          <a href="#" class="method-button">LINEで問い合わせ</a>
+        </div>
+
+        <div class="method-card fade-in">
+          <div class="method-icon">✉️</div>
+          <h3 class="method-title">メール</h3>
+          <p class="method-description">
+            詳細なご質問や資料請求など、
+            じっくりとお問い合わせいただけます。
+          </p>
+          <div class="method-detail">jinishiyama1216@gmail.com</div>
+          <div class="method-hours">24時間受付・通常24時間以内に返信</div>
+          <a href="mailto:info@medistudy-hiroshima.com" class="method-button">メールを送る</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="section contact-form-section" id="form">
+    <div class="container">
+      <div class="form-container fade-in">
+        <h2 class="form-title">お問い合わせフォーム</h2>
+        
+        <form>
+          <div class="form-group">
+            <label for="inquiry-type" class="form-label">お問い合わせ種別 <span class="required">*</span></label>
+            <select id="inquiry-type" class="form-select" required>
+              <option value="">選択してください</option>
+              <option value="trial">無料体験申し込み</option>
+              <option value="info">資料請求・詳細説明</option>
+              <option value="consultation">学習相談</option>
+              <option value="other">その他</option>
+            </select>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="student-name" class="form-label">お子様のお名前 <span class="required">*</span></label>
+              <input type="text" id="student-name" class="form-input" required placeholder="例：山田 太郎">
+            </div>
+            <div class="form-group">
+              <label for="grade" class="form-label">学年 <span class="required">*</span></label>
+              <select id="grade" class="form-select" required>
+                <option value="">選択してください</option>
+                <option value="high1">高校1年生</option>
+                <option value="high2">高校2年生</option>
+                <option value="high3">高校3年生</option>
+                <option value="graduate">高校卒業生</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="parent-name" class="form-label">保護者様のお名前 <span class="required">*</span></label>
+              <input type="text" id="parent-name" class="form-input" required placeholder="例：山田 花子">
+            </div>
+            <div class="form-group">
+              <label for="phone" class="form-label">電話番号 <span class="required">*</span></label>
+              <input type="tel" id="phone" class="form-input" required placeholder="例：090-1234-5678">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">メールアドレス <span class="required">*</span></label>
+            <input type="email" id="email" class="form-input" required placeholder="例：example@email.com">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="school" class="form-label">学校名</label>
+              <input type="text" id="school" class="form-input" placeholder="例：広島○○高等学校">
+            </div>
+            <div class="form-group">
+              <label for="target" class="form-label">志望校・目標</label>
+              <input type="text" id="target" class="form-input" placeholder="例：広島大学医学部">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">お問い合わせ内容 <span class="required">*</span></label>
+            <textarea id="message" class="form-textarea" required placeholder="ご質問やご相談内容をお聞かせください。無料体験をご希望の場合は、希望日時もお知らせください。"></textarea>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="privacy" required>
+            <label for="privacy">
+              <a href="#" style="color: var(--mint); text-decoration: underline;">プライバシーポリシー</a>に同意します
+            </label>
+          </div>
+
+          <button type="submit" class="submit-button">送信する</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hours Section -->
+  <section class="section hours-section">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">営業時間・アクセス詳細</h2>
+        <p style="font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300; margin-bottom: 40px;">OPENING HOURS</p>
+      </div>
+      
+      <div class="hours-grid">
+        <div class="hours-card fade-in">
+          <h3 class="hours-title">自習室利用時間</h3>
+          <div class="hours-list">
+            月曜日〜日曜日<br>
+            <strong>7:00 - 22:00</strong><br>
+            年中無休
+          </div>
+        </div>
+
+        <div class="hours-card fade-in">
+          <h3 class="hours-title">質問対応時間</h3>
+          <div class="hours-list">
+            月曜日〜金曜日<br>
+            <strong>18:00 - 21:30</strong><br>
+            土曜日・日曜日<br>
+            <strong>10:00 - 18:00</strong>
+          </div>
+        </div>
+
+        <div class="hours-card fade-in">
+          <h3 class="hours-title">面談・相談受付</h3>
+          <div class="hours-list">
+            月曜日〜日曜日<br>
+            <strong>10:00 - 21:00</strong><br>
+            ※要予約<br>
+            ※オンライン面談も対応
+          </div>
+        </div>
+
+        <div class="hours-card fade-in">
+          <h3 class="hours-title">電話受付時間</h3>
+          <div class="hours-list">
+            月曜日〜日曜日<br>
+            <strong>10:00 - 21:00</strong><br>
+            年中無休<br>
+            ※緊急時は24時間対応
+          </div>
+        </div>
+      </div>
+
+      <div class="special-note fade-in">
+        <h3>特別なご案内</h3>
+        <p>
+          定期テスト期間中は特別開館時間を設けています。また、受験直前期には24時間利用可能な特別プランもご用意しております。
+          詳細はお問い合わせください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section" style="background: linear-gradient(135deg, var(--mint), rgba(138, 180, 167, 0.8)); color: var(--white); text-align: center; padding: 100px 0;">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="font-size: 32px; font-weight: 300; margin-bottom: 25px; letter-spacing: 2px;">まずは教室を見学してみませんか？</h2>
+        <p style="font-size: 16px; margin-bottom: 40px; opacity: 0.9; font-weight: 300;">
+          カフェのような心地よい学習環境を、実際にご体感ください。<br>
+          医学科コーチとの面談も承ります。
+        </p>
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+          <a href="#" style="display: inline-block; padding: 18px 40px; background: var(--white); color: var(--mint); text-decoration: none; border-radius: 30px; font-weight: 400; font-size: 16px; letter-spacing: 1px; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);">無料見学を予約する</a>
+          <a href="tel:082-555-0123" style="display: inline-block; padding: 18px 40px; background: transparent; color: var(--white); text-decoration: none; border-radius: 30px; font-weight: 400; font-size: 16px; letter-spacing: 1px; transition: all 0.3s ease; border: 2px solid var(--white);">今すぐ電話で相談</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="en-font">Medistudy</h4>
+          <p>
+            毎日通える、"医学科コーチ"と学ぶ場所。<br>
+            あなたの可能性を、静かに、確実に、引き出します。
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>アクセス</h4>
+          <p>
+            〒730-0044<br>
+            広島県広島市中区宝町4-29第一小林ビル202<br>
+            TEL: 080-3886-1480<br>
+            営業時間: 9:00-22:00（年中無休）
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>お問い合わせ</h4>
+          <p>
+            <a href="https://lin.ee/GQDsqfQ">LINE公式アカウント</a><br>
+            <a href="https://www.instagram.com/medizero0101/">Instagram</a><br>
+            <a href="#form">お問い合わせフォーム</a><br>
+            <a href="#access">アクセス</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Medistudy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Form validation
+    document.querySelector('form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Basic validation
+      const requiredFields = document.querySelectorAll('[required]');
+      let isValid = true;
+      
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          isValid = false;
+          field.style.borderColor = '#e74c3c';
+        } else {
+          field.style.borderColor = 'var(--mint)';
+        }
+      });
+      
+      if (isValid) {
+        alert('お問い合わせありがとうございます。24時間以内にご連絡いたします。');
+        this.reset();
+      } else {
+        alert('必須項目をすべて入力してください。');
+      }
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Fade in animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Header background change on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+      }
+    });
+
+    // Form input focus effects
+    document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+      input.addEventListener('focus', function() {
+        this.style.borderColor = 'var(--mint)';
+      });
+      
+      input.addEventListener('blur', function() {
+        if (!this.value) {
+          this.style.borderColor = 'rgba(138, 180, 167, 0.2)';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

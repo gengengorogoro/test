@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>料金・プラン - Medistudy | 医学科コーチと学ぶ場所</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #ffffff;
+      --sand: #f5f1ed;
+      --mint: #8ab4a7;
+      --navy: #2c3e50;
+      --gold: #d4af37;
+      --text-dark: #333333;
+      --text-light: #666666;
+      --text-lighter: #999999;
+    }
+
+    body {
+      font-family: 'Noto Serif JP', serif;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background-color: var(--white);
+    }
+
+    .en-font {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--mint);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--mint);
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 150px 0 100px;
+      background: linear-gradient(rgba(245, 241, 237, 0.8), rgba(245, 241, 237, 0.8)), url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .page-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--mint);
+      letter-spacing: 4px;
+      font-weight: 300;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 100px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Overview Section */
+    .overview {
+      background-color: var(--sand);
+      text-align: center;
+    }
+
+    .overview-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .overview h2 {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .overview p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 2.2;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    .overview-highlight {
+      font-size: 18px;
+      color: var(--mint);
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-top: 40px;
+    }
+
+    /* Plan Cards */
+    .plans-section {
+      padding: 120px 0;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    .plan-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 50px 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      position: relative;
+      transition: all 0.4s ease;
+      border: 2px solid transparent;
+    }
+
+    .plan-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    .plan-card.recommended {
+      border-color: var(--mint);
+      transform: scale(1.05);
+    }
+
+    .plan-card.recommended:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--mint);
+      color: var(--white);
+      padding: 8px 24px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+
+    .plan-name {
+      font-size: 28px;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .plan-type {
+      text-align: center;
+      font-size: 14px;
+      color: var(--mint);
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      font-weight: 300;
+    }
+
+    .plan-price {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .price-amount {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+
+    .price-unit {
+      font-size: 16px;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    .price-tax {
+      font-size: 12px;
+      color: var(--text-lighter);
+      margin-top: 8px;
+    }
+
+    .plan-features {
+      margin-bottom: 40px;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 15px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .feature-icon {
+      width: 20px;
+      height: 20px;
+      background: var(--mint);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      flex-shrink: 0;
+      font-size: 10px;
+      color: var(--white);
+    }
+
+    .feature-text {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 300;
+      line-height: 1.6;
+    }
+
+    .feature-highlight {
+      color: var(--mint);
+      font-weight: 400;
+    }
+
+    .plan-button {
+      width: 100%;
+      padding: 18px 30px;
+      background: var(--mint);
+      color: var(--white);
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: block;
+      text-align: center;
+    }
+
+    .plan-button:hover {
+      background: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .plan-button.secondary {
+      background: transparent;
+      color: var(--mint);
+      border: 2px solid var(--mint);
+    }
+
+    .plan-button.secondary:hover {
+      background: var(--mint);
+      color: var(--white);
+    }
+
+    /* Comparison Table */
+    .comparison-section {
+      background: var(--sand);
+    }
+
+    .comparison-table {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      margin-top: 60px;
+    }
+
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .comparison-table th,
+    .comparison-table td {
+      padding: 20px 15px;
+      text-align: center;
+      border-right: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .comparison-table th {
+      background: var(--sand);
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .comparison-table td {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 300;
+      border-bottom: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .comparison-table .feature-name {
+      background: var(--sand);
+      font-weight: 400;
+      color: var(--text-dark);
+      text-align: left;
+    }
+
+    .comparison-table .included {
+      color: var(--mint);
+      font-weight: 400;
+    }
+
+    .comparison-table .not-included {
+      color: var(--text-lighter);
+    }
+
+    /* Additional Info */
+    .additional-info {
+      padding: 80px 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .info-card {
+      background: var(--white);
+      padding: 40px 35px;
+      border-radius: 8px;
+      border-left: 4px solid var(--mint);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .info-title {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+    }
+
+    .info-content {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .info-highlight {
+      color: var(--mint);
+      font-weight: 400;
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      background: var(--sand);
+    }
+
+    .faq-item {
+      background: var(--white);
+      margin-bottom: 20px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .faq-question {
+      padding: 25px 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: background 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: var(--sand);
+    }
+
+    .faq-answer {
+      padding: 0 30px 25px;
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+      font-weight: 300;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-icon {
+      font-size: 18px;
+      color: var(--mint);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* CTA Section */
+    .cta {
+      background: linear-gradient(135deg, var(--mint), rgba(138, 180, 167, 0.8));
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .cta-description {
+      font-size: 16px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 18px 40px;
+      background: var(--white);
+      color: var(--mint);
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .cta-button.secondary:hover {
+      background: var(--white);
+      color: var(--mint);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .footer-section a:hover {
+      color: var(--mint);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+
+      .plans-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .plan-card.recommended {
+        transform: none;
+      }
+
+      .plan-card.recommended:hover {
+        transform: translateY(-10px);
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .comparison-table {
+        overflow-x: auto;
+      }
+
+      .comparison-table table {
+        min-width: 600px;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo en-font">Medistudy</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="instructors.html">講師紹介</a></li>
+          <li><a href="services.html">サービス</a></li>
+          <li><a href="#" class="active">料金・プラン</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="entry.html">入塾の流れ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title fade-in">料金・プラン</h1>
+      <p class="page-subtitle en-font fade-in">PRICING</p>
+    </div>
+  </section>
+
+  <!-- Overview Section -->
+  <section class="section overview">
+    <div class="container">
+      <div class="overview-content fade-in">
+        <h2>あなたに最適な学びのかたちを。</h2>
+        <p>
+          Medistudyでは、一人ひとりの学習スタイルや目標に合わせて、
+          2つのプランをご用意しています。
+        </p>
+        <p>
+          どちらのプランも、医学科コーチによる「教えない・引き出す」指導と、
+          カフェ風の心地よい学習環境を提供いたします。
+        </p>
+        <p class="overview-highlight">
+          まずは無料体験で、あなたに合ったプランを見つけてください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plans Section -->
+  <section class="section plans-section">
+    <div class="container">
+      <div class="plans-grid">
+        <!-- ベーシックプラン -->
+        <div class="plan-card fade-in">
+          <h2 class="plan-name">習慣化プラン</h2>
+          <p class="plan-type">自習中心で成長したい方向け</p>
+          <div class="plan-price">
+            <div class="price-amount">¥35,000</div>
+            <div class="price-unit">/ 月額</div>
+            <div class="price-tax">※税込価格</div>
+          </div>
+          <div class="plan-features">
+            <ul class="feature-list">
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">自習室利用<span class="feature-highlight">（朝7:00〜夜22:00）</span></div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">コーチングサポート<span class="feature-highlight">（平日18:00-21:30）</span></div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">学習記録システム利用</div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">週1回のコーチング面談</div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">参考書選定サポート</div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">基本的な学習計画作成</div>
+              </li>
+            </ul>
+          </div>
+          <a href="#" class="plan-button secondary">詳細を見る</a>
+        </div>
+
+        <!-- プレミアムプラン -->
+        <div class="plan-card recommended fade-in">
+          <div class="plan-badge">人気No.1</div>
+          <h2 class="plan-name">徹底サポートプラン</h2>
+          <p class="plan-type">専属コーチと二人三脚で成長したい方向け</p>
+          <div class="plan-price">
+            <div class="price-amount">¥48,000</div>
+            <div class="price-unit">/ 月額</div>
+            <div class="price-tax">※税込価格</div>
+          </div>
+          <div class="plan-features">
+            <ul class="feature-list">
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text"><span class="feature-highlight">習慣化プランの全サービス</span></div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">週1回のコーチング面談<span class="feature-highlight">（30分）</span></div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">学習戦略設計サポート</div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">LINEサポート<span class="feature-highlight">（24時間対応）</span></div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">習慣化徹底サポート</div>
+              </li>
+              <li class="feature-item">
+                <div class="feature-icon">✓</div>
+                <div class="feature-text">月1学習戦略コーチング<span class="feature-highlight">（60分）</span></div>
+              </li>
+            </ul>
+          </div>
+          <a href="#" class="plan-button">今すぐ申し込む</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Table -->
+  <section class="section comparison-section">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="text-align: center; font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">プラン比較表</h2>
+        <p style="text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300;">PLAN COMPARISON</p>
+      </div>
+      
+      <div class="comparison-table fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th style="text-align: left;">サービス内容</th>
+              <th>習慣化プラン</th>
+              <th>徹底サポートプラン</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="feature-name">自習室利用（朝7:00〜夜22:00）</td>
+              <td class="included">○</td>
+              <td class="included">○</td>
+            </tr>
+            <tr>
+              <td class="feature-name">質問対応（平日18:00-21:30）</td>
+              <td class="included">○</td>
+              <td class="included">○</td>
+            </tr>
+            <tr>
+              <td class="feature-name">学習記録システム</td>
+              <td class="included">○</td>
+              <td class="included">○</td>
+            </tr>
+            <tr>
+              <td class="feature-name">コーチング面談</td>
+              <td class="included">月1回</td>
+              <td class="included">週1回</td>
+            </tr>
+            <tr>
+              <td class="feature-name">LINEサポート</td>
+              <td class="not-included">×</td>
+              <td class="included">○</td>
+            </tr>
+            <tr>
+              <td class="feature-name">詳細学習戦略設計</td>
+              <td class="not-included">基本のみ</td>
+              <td class="included">○</td>
+            </tr>
+            <tr>
+              <td class="feature-name">習慣化徹底サポート</td>
+              <td class="not-included">×</td>
+              <td class="included">○</td>
+            </tr>
+            <tr>
+              <td class="feature-name">志望校別対策</td>
+              <td class="not-included">×</td>
+              <td class="included">○</td>
+            </tr>
+            <tr>
+              <td class="feature-name">月次戦略見直し面談</td>
+              <td class="not-included">×</td>
+              <td class="included">○</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Info -->
+  <section class="section additional-info">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="text-align: center; font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">料金に関する詳細情報</h2>
+        <p style="text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300;">ADDITIONAL INFORMATION</p>
+      </div>
+      
+      <div class="info-grid">
+        <div class="info-card fade-in">
+          <h3 class="info-title">入会金・その他費用</h3>
+          <div class="info-content">
+            <p><span class="info-highlight">入会金：¥20,000</span>（初回のみ）</p>
+          </div>
+        </div>
+
+        <div class="info-card fade-in">
+          <h3 class="info-title">お支払い方法</h3>
+          <div class="info-content">
+            <p>• <span class="info-highlight">銀行振込</span>（月払い・年払い対応）</p>
+          </div>
+        </div>
+
+        <div class="info-card fade-in">
+          <h3 class="info-title">プラン変更・退会について</h3>
+          <div class="info-content">
+            <p>• プラン変更は<span class="info-highlight">いつでも可能</span></p>
+            <p>• 退会は<span class="info-highlight">1ヶ月前までに</span>ご連絡ください</p>
+            <p>• 長期休暇中の<span class="info-highlight">休会制度</span>あり</p>
+            <p>• 無料体験後の<span class="info-highlight">クーリングオフ</span>対応</p>
+          </div>
+        </div>
+
+        <div class="info-card fade-in">
+          <h3 class="info-title">特別キャンペーン</h3>
+          <div class="info-content">
+            <p>• <span class="info-highlight">開校記念キャンペーン</span>：入会金無料・初月月謝無料</p>
+            <p>• <span class="info-highlight">紹介キャンペーン</span>：紹介者・入会者ともに月謝半額</p>
+            <p>※キャンペーンは予告なく終了する場合があります</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="text-align: center; font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">よくある質問</h2>
+        <p style="text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300; margin-bottom: 60px;">FAQ</p>
+      </div>
+      
+      <div class="faq-list">
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>途中でプラン変更はできますか？</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            はい、いつでもプラン変更が可能です。学習状況や目標の変化に応じて、最適なプランに変更していただけます。変更は次月から適用され、差額の調整もいたします。
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>無料体験では何ができますか？</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            無料体験では、実際の自習室利用からコーチングサポート、簡易的なコーチング面談まで体験いただけます。期間は1週間で、両プランのサービスをお試しいただけます。
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>部活が忙しくても大丈夫ですか？</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            もちろんです。部活のスケジュールに合わせた学習計画を作成し、短時間で効果を出す方法をコーチがサポートします。
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>どちらのプランを選べばよいか分からない場合は？</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            無料体験時に、現在の学習状況や目標をお聞きし、最適なプランをご提案いたします。また、入会後も学習の進捗に応じてプラン変更のご相談が可能です。
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>医学部以外の志望でも大丈夫ですか？</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            はい、文理問わず全ての難関大志望の方に対応しています。医学科コーチは幅広い受験知識を持っており、各志望校に合わせた戦略を立てることができます。
+          </div>
+        </div>
+
+        <div class="faq-item fade-in">
+          <div class="faq-question">
+            <span>自習室は土日も利用できますか？</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            土日も朝7:00〜夜22:00まで利用可能です。ただし、コーチングサポートは平日のみとなります。土日の学習サポートについては、LINEでの相談（プレミアムプランのみ）が可能です。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta">
+    <div class="container">
+      <div class="fade-in">
+        <h2 class="cta-title">まずは無料体験から始めませんか？</h2>
+        <p class="cta-description">
+          1週間の無料体験で、あなたに最適なプランを見つけましょう。<br>
+          医学科コーチが丁寧にサポートいたします。
+        </p>
+        <div class="cta-buttons">
+          <a href="#" class="cta-button">無料体験を申し込む</a>
+          <a href="#" class="cta-button secondary">資料をダウンロード</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="en-font">Medistudy</h4>
+          <p>
+            毎日通える、"医学科コーチ"と学ぶ場所。<br>
+            あなたの可能性を、静かに、確実に、引き出します。
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>アクセス</h4>
+          <p>
+            〒730-0044<br>
+            広島県広島市中区宝町4-29第一小林ビル202<br>
+            TEL: 080-3886-1480<br>
+            営業時間: 9:00-22:00（年中無休）
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>お問い合わせ</h4>
+          <p>
+            <a href="https://lin.ee/GQDsqfQ">LINE公式アカウント</a><br>
+            <a href="https://www.instagram.com/medizero0101/">Instagram</a><br>
+            <a href="faq.html #form">お問い合わせフォーム</a><br>
+            <a href="faq.html #access">アクセス</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Medistudy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ toggle functionality
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Fade in animation
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Header background change on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>入塾の流れ - Medistudy | 医学科コーチと学ぶ場所</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --white: #ffffff;
+      --sand: #f5f1ed;
+      --mint: #8ab4a7;
+      --navy: #2c3e50;
+      --gold: #d4af37;
+      --text-dark: #333333;
+      --text-light: #666666;
+      --text-lighter: #999999;
+    }
+
+    body {
+      font-family: 'Noto Serif JP', serif;
+      line-height: 1.8;
+      color: var(--text-dark);
+      background-color: var(--white);
+    }
+
+    .en-font {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 20px 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(138, 180, 167, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--mint);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 300;
+      font-size: 14px;
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:hover,
+    .nav-menu a.active {
+      color: var(--mint);
+    }
+
+    /* Page Header */
+    .page-header {
+      padding: 150px 0 100px;
+      background: linear-gradient(rgba(245, 241, 237, 0.8), rgba(245, 241, 237, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2000&q=80');
+      background-size: cover;
+      background-position: center;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--text-dark);
+      margin-bottom: 20px;
+      letter-spacing: 3px;
+    }
+
+    .page-subtitle {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--mint);
+      letter-spacing: 4px;
+      font-weight: 300;
+    }
+
+    /* Section Styles */
+    .section {
+      padding: 100px 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* Introduction */
+    .intro-section {
+      background-color: var(--sand);
+      text-align: center;
+    }
+
+    .intro-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .intro-content h2 {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .intro-content p {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 2;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    .intro-highlight {
+      font-size: 18px;
+      color: var(--mint);
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-top: 30px;
+    }
+
+    /* Flow Steps */
+    .flow-section {
+      padding: 120px 0;
+    }
+
+    .step-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .flow-line {
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: linear-gradient(180deg, var(--mint) 0%, rgba(138, 180, 167, 0.3) 100%);
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    .step-item {
+      position: relative;
+      margin-bottom: 100px;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .step-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .step-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .step-content {
+      flex: 1;
+      background: var(--white);
+      padding: 50px 40px;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+      margin: 0 60px;
+      transition: all 0.4s ease;
+    }
+
+    .step-content:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+    }
+
+    .step-number {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80px;
+      height: 80px;
+      background: var(--mint);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--white);
+      box-shadow: 0 10px 30px rgba(138, 180, 167, 0.3);
+      z-index: 3;
+    }
+
+    .step-title {
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      color: var(--mint);
+    }
+
+    .step-description {
+      font-size: 16px;
+      color: var(--text-light);
+      line-height: 2;
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    .step-details {
+      background: var(--sand);
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 25px;
+    }
+
+    .step-details h4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+      color: var(--text-dark);
+    }
+
+    .step-details ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .step-details li {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      font-weight: 300;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .step-details li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--mint);
+      font-weight: 400;
+    }
+
+    .step-note {
+      font-size: 14px;
+      color: var(--mint);
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    /* What to Expect */
+    .expect-section {
+      background: var(--sand);
+    }
+
+    .expect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .expect-card {
+      background: var(--white);
+      padding: 40px 35px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+    }
+
+    .expect-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .expect-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--mint);
+      border-radius: 50%;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--white);
+    }
+
+    .expect-title {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .expect-description {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* Timeline */
+    .timeline-section {
+      padding: 80px 0;
+    }
+
+    .timeline-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--white);
+      padding: 50px;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    }
+
+    .timeline-title {
+      text-align: center;
+      font-size: 24px;
+      font-weight: 300;
+      margin-bottom: 40px;
+      letter-spacing: 2px;
+      color: var(--mint);
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: var(--sand);
+      border-radius: 8px;
+    }
+
+    .timeline-day {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--mint);
+      min-width: 100px;
+      margin-right: 30px;
+    }
+
+    .timeline-content {
+      flex: 1;
+    }
+
+    .timeline-event {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 5px;
+      letter-spacing: 1px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--text-light);
+      font-weight: 300;
+    }
+
+    /* Preparation */
+    .preparation-section {
+      background: var(--sand);
+    }
+
+    .prep-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+      margin-top: 60px;
+    }
+
+    .prep-card {
+      background: var(--white);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .prep-title {
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+      color: var(--mint);
+    }
+
+    .prep-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .prep-list li {
+      font-size: 14px;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      font-weight: 300;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    .prep-list li:before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--mint);
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--mint), rgba(138, 180, 167, 0.8));
+      color: var(--white);
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .cta-title {
+      font-size: 32px;
+      font-weight: 300;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .cta-description {
+      font-size: 16px;
+      margin-bottom: 40px;
+      opacity: 0.9;
+      font-weight: 300;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 18px 40px;
+      background: var(--white);
+      color: var(--mint);
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 400;
+      font-size: 16px;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .cta-button.secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid var(--white);
+    }
+
+    .cta-button.secondary:hover {
+      background: var(--white);
+      color: var(--mint);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--navy);
+      color: var(--white);
+      padding: 60px 0 30px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .footer-section h4 {
+      font-size: 16px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .footer-section p,
+    .footer-section a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .footer-section a:hover {
+      color: var(--mint);
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-container {
+        padding: 0 20px;
+      }
+
+      .nav-menu {
+        display: none;
+      }
+
+      .container {
+        padding: 0 20px;
+      }
+
+      .page-title {
+        font-size: 32px;
+      }
+
+      .flow-line {
+        left: 30px;
+      }
+
+      .step-item {
+        flex-direction: column !important;
+        align-items: flex-start;
+        margin-left: 60px;
+        margin-bottom: 80px;
+      }
+
+      .step-number {
+        left: 30px;
+        transform: translateY(-50%);
+      }
+
+      .step-content {
+        margin: 0;
+        margin-top: 40px;
+        padding: 30px 25px;
+      }
+
+      .prep-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 1s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .slide-in-left {
+      opacity: 0;
+      transform: translateX(-50px);
+      transition: all 1s ease;
+    }
+
+    .slide-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .slide-in-right {
+      opacity: 0;
+      transform: translateX(50px);
+      transition: all 1s ease;
+    }
+
+    .slide-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="logo en-font">Medistudy</a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href=index.html>ホーム</a></li>
+          <li><a href=instructors.html>講師紹介</a></li>
+          <li><a href=services.html>サービス</a></li>
+          <li><a href=pricing.html>料金・プラン</a></li>
+          <li><a href=contact.html>アクセス</a></li>
+          <li><a href=faq.html>FAQ</a></li>
+          <li><a href="#" class="active">入塾の流れ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title fade-in">入塾の流れ</h1>
+      <p class="page-subtitle en-font fade-in">ADMISSION PROCESS</p>
+    </div>
+  </section>
+
+  <!-- Introduction -->
+  <section class="section intro-section">
+    <div class="container">
+      <div class="intro-content fade-in">
+        <h2>あなたの学習人生が変わる、その始まり。</h2>
+        <p>
+          Medistudyでは、一人ひとりに最適な学習環境を提供するため、
+          丁寧な入塾プロセスを大切にしています。
+        </p>
+        <p>
+          無料体験から入塾まで、コーチが寄り添いながら、
+          あなたにぴったりの学習スタイルを一緒に見つけていきます。
+        </p>
+        <p class="intro-highlight">
+          急がず、焦らず。あなたのペースで、確実に。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Flow Steps -->
+  <section class="section flow-section">
+    <div class="container">
+      <div class="step-container">
+        <div class="flow-line"></div>
+        
+        <!-- Step 1 -->
+        <div class="step-item slide-in-left">
+          <div class="step-number">01</div>
+          <div class="step-content">
+            <h3 class="step-title">お問い合わせ・無料相談</h3>
+            <p class="step-description">
+              まずはお気軽にお問い合わせください。電話、LINE、メール、お問い合わせフォームから
+              ご都合の良い方法でご連絡いただけます。
+            </p>
+            <div class="step-details">
+              <h4>この段階で行うこと</h4>
+              <ul>
+                <li>現在の学習状況やお悩みをヒアリング</li>
+                <li>Medistudyの特徴や指導方針のご説明</li>
+                <li>無料体験の日程調整</li>
+                <li>ご質問・ご不安点の解消</li>
+              </ul>
+            </div>
+            <p class="step-note">所要時間：15〜30分程度</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-item slide-in-right">
+          <div class="step-number">02</div>
+          <div class="step-content">
+            <h3 class="step-title">無料体験（1週間）</h3>
+            <p class="step-description">
+              実際の学習環境を体験していただきます。自習室の利用、コーチとの面談、
+              質問対応など、Medistudyのサービスをフルに体験できます。
+            </p>
+            <div class="step-details">
+              <h4>体験できること</h4>
+              <ul>
+                <li>カフェ風自習室での学習体験</li>
+                <li>コーチとの個別面談</li>
+                <li>質問対応サービス</li>
+                <li>学習計画の簡易作成</li>
+                <li>両プランのサービス比較</li>
+              </ul>
+            </div>
+            <p class="step-note">体験期間中はすべて無料で利用可能</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-item slide-in-left">
+          <div class="step-number">03</div>
+          <div class="step-content">
+            <h3 class="step-title">詳細ヒアリング・カウンセリング</h3>
+            <p class="step-description">
+              体験を踏まえて、より詳しくお話を伺います。学習の目標、現在の課題、
+              生活スタイルなどを詳細にヒアリングし、最適なプランをご提案します。
+            </p>
+            <div class="step-details">
+              <h4>詳しくお聞きすること</h4>
+              <ul>
+                <li>志望校・将来の目標</li>
+                <li>現在の学習習慣と課題</li>
+                <li>部活や学校行事のスケジュール</li>
+                <li>得意・苦手科目の分析</li>
+                <li>保護者様のご要望</li>
+              </ul>
+            </div>
+            <p class="step-note">生徒・保護者様・コーチの三者面談も可能</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-item slide-in-right">
+          <div class="step-number">04</div>
+          <div class="step-content">
+            <h3 class="step-title">最適プラン・戦略のご提案</h3>
+            <p class="step-description">
+              ヒアリング内容を基に、あなたに最適な学習プランと戦略をご提案します。
+              プラン選択から具体的な学習方法まで、詳しくご説明いたします。
+            </p>
+            <div class="step-details">
+              <h4>ご提案する内容</h4>
+              <ul>
+                <li>最適なプラン（ベーシック/プレミアム）</li>
+                <li>個別学習戦略の設計</li>
+                <li>目標達成までのロードマップ</li>
+                <li>週間・月間スケジュール案</li>
+                <li>使用教材の選定</li>
+              </ul>
+            </div>
+            <p class="step-note">納得いくまで何度でもご相談可能</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-item slide-in-left">
+          <div class="step-number">05</div>
+          <div class="step-content">
+            <h3 class="step-title">入塾手続き・学習開始</h3>
+            <p class="step-description">
+              ご納得いただけましたら、入塾手続きを行います。
+              手続き完了後、すぐに本格的な学習をスタートできます。
+            </p>
+            <div class="step-details">
+              <h4>手続きに必要なもの</h4>
+              <ul>
+                <li>入塾申込書（当日記入可能）</li>
+                <li>初月の月謝・入会金</li>
+                <li>身分証明書（学生証など）</li>
+                <li>銀行口座情報（口座振替の場合）</li>
+              </ul>
+            </div>
+            <p class="step-note">手続き後、即日から学習環境をご利用いただけます</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What to Expect -->
+  <section class="section expect-section">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="text-align: center; font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">無料体験で体験できること</h2>
+        <p style="text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300;">WHAT TO EXPECT</p>
+      </div>
+      
+      <div class="expect-grid">
+        <div class="expect-card fade-in">
+          <div class="expect-icon">🏛️</div>
+          <h3 class="expect-title">カフェ風学習環境</h3>
+          <p class="expect-description">
+            朝7:00〜夜22:00まで利用可能な、
+            心地よい学習空間を実際に体験。
+            集中できる環境かどうかを確認できます。
+          </p>
+        </div>
+
+        <div class="expect-card fade-in">
+          <div class="expect-icon">👨‍🎓</div>
+          <h3 class="expect-title">医学科コーチとの面談</h3>
+          <p class="expect-description">
+            現役医学部生コーチとの個別面談で、
+            学習相談や進路相談を体験。
+          </p>
+        </div>
+
+        <div class="expect-card fade-in">
+          <div class="expect-icon">❓</div>
+          <h3 class="expect-title">質問対応サービス</h3>
+          <p class="expect-description">
+            「教えない・引き出す」アプローチを
+            実際に体験。分からない問題を
+            どのように解決するかを体感できます。
+          </p>
+        </div>
+
+        <div class="expect-card fade-in">
+          <div class="expect-icon">📋</div>
+          <h3 class="expect-title">学習計画作成</h3>
+          <p class="expect-description">
+            あなたの現状に合わせた
+            学習計画の簡易版を作成。
+            計画の立て方や考え方を学べます。
+          </p>
+        </div>
+
+        <div class="expect-card fade-in">
+          <div class="expect-icon">⚖️</div>
+          <h3 class="expect-title">プラン比較体験</h3>
+          <p class="expect-description">
+            ベーシックプランとプレミアムプランの
+            違いを実際に体験して、
+            どちらが合うかを判断できます。
+          </p>
+        </div>
+
+        <div class="expect-card fade-in">
+          <div class="expect-icon">💬</div>
+          <h3 class="expect-title">詳細相談</h3>
+          <p class="expect-description">
+            料金、スケジュール、サポート内容など、
+            気になることを何でも
+            詳しく相談できます。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preparation -->
+  <section class="section preparation-section">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="text-align: center; font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">体験前の準備</h2>
+        <p style="text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300;">PREPARATION</p>
+      </div>
+      
+      <div class="prep-grid">
+        <div class="prep-card fade-in">
+          <h3 class="prep-title">ご準備いただくもの</h3>
+          <ul class="prep-list">
+            <li>筆記用具（ノート、ペン等）</li>
+            <li>現在使用している教材・参考書</li>
+            <li>最近の成績表や模試結果</li>
+            <li>学校の時間割・部活スケジュール</li>
+            <li>志望校の資料（あれば）</li>
+            <li>現在の学習に関する悩みや質問</li>
+          </ul>
+        </div>
+
+        <div class="prep-card fade-in">
+          <h3 class="prep-title">事前に考えておくこと</h3>
+          <ul class="prep-list">
+            <li>現在の学習で困っていること</li>
+            <li>将来の目標・志望校</li>
+            <li>理想的な学習スタイル</li>
+            <li>部活や習い事との両立について</li>
+            <li>家庭学習の現状と課題</li>
+            <li>塾に期待すること</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08); margin-top: 40px; text-align: center;" class="fade-in">
+        <h3 style="font-size: 20px; font-weight: 400; margin-bottom: 20px; letter-spacing: 1px; color: var(--mint);">保護者の方へ</h3>
+        <p style="font-size: 16px; color: var(--text-light); line-height: 2; font-weight: 300;">
+          無料体験には保護者の方もぜひご同席ください。お子様の学習状況について一緒にお話しし、
+          ご家庭での学習サポートについてもご相談いただけます。
+          三者面談形式で、全員が納得できる学習計画を立てていきましょう。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section" style="background: var(--white); padding: 80px 0;">
+    <div class="container">
+      <div class="fade-in">
+        <h2 style="text-align: center; font-size: 32px; font-weight: 300; margin-bottom: 30px; letter-spacing: 2px;">入塾に関するよくある質問</h2>
+        <p style="text-align: center; font-family: 'Playfair Display', serif; font-size: 14px; color: var(--mint); letter-spacing: 3px; font-weight: 300; margin-bottom: 60px;">FAQ</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+        <div style="background: var(--sand); padding: 30px; border-radius: 8px; border-left: 4px solid var(--mint);" class="fade-in">
+          <h4 style="font-size: 16px; font-weight: 400; margin-bottom: 15px; letter-spacing: 1px; color: var(--text-dark);">無料体験は本当に無料ですか？</h4>
+          <p style="font-size: 14px; color: var(--text-light); line-height: 1.8; font-weight: 300;">
+            はい、1日無料体験ではすべてのサービスを無料でご利用いただけます。
+            教材費などの追加費用も一切かかりません。
+          </p>
+        </div>
+
+        <div style="background: var(--sand); padding: 30px; border-radius: 8px; border-left: 4px solid var(--mint);" class="fade-in">
+          <h4 style="font-size: 16px; font-weight: 400; margin-bottom: 15px; letter-spacing: 1px; color: var(--text-dark);">体験後に断ることはできますか？</h4>
+          <p style="font-size: 14px; color: var(--text-light); line-height: 1.8; font-weight: 300;">
+            もちろんです。無理な勧誘は一切いたしません。
+            体験後にじっくりご検討いただき、納得してからご入塾ください。
+          </p>
+        </div>
+
+        <div style="background: var(--sand); padding: 30px; border-radius: 8px; border-left: 4px solid var(--mint);" class="fade-in">
+          <h4 style="font-size: 16px; font-weight: 400; margin-bottom: 15px; letter-spacing: 1px; color: var(--text-dark);">いつから通い始められますか？</h4>
+          <p style="font-size: 14px; color: var(--text-light); line-height: 1.8; font-weight: 300;">
+            入塾手続き完了後、即日からご利用いただけます。
+            月の途中からでも日割り計算で対応いたします。
+          </p>
+        </div>
+
+        <div style="background: var(--sand); padding: 30px; border-radius: 8px; border-left: 4px solid var(--mint);" class="fade-in">
+          <h4 style="font-size: 16px; font-weight: 400; margin-bottom: 15px; letter-spacing: 1px; color: var(--text-dark);">途中でプランを変更できますか？</h4>
+          <p style="font-size: 14px; color: var(--text-light); line-height: 1.8; font-weight: 300;">
+            はい、学習状況に応じて月単位でプラン変更が可能です。
+            より良い学習環境を提供するため、柔軟に対応いたします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="fade-in">
+        <h2 class="cta-title">あなたの学習人生を変える第一歩を、今すぐ。</h2>
+        <p class="cta-description">
+          まずはお気軽にお問い合わせください。あなたに最適な学習方法を、
+          医学科コーチと一緒に見つけていきましょう。
+        </p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="cta-button">無料体験に申し込む</a>
+          <a href="tel:082-555-0123" class="cta-button secondary">今すぐ電話で相談</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4 class="en-font">Medistudy</h4>
+          <p>
+            毎日通える、"医学科コーチ"と学ぶ場所。<br>
+            あなたの可能性を、静かに、確実に、引き出します。
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>アクセス</h4>
+          <p>
+            〒730-0044<br>
+            広島県広島市中区宝町4-29第一小林ビル202<br>
+            TEL: 080-3886-1480<br>
+            営業時間: 9:00-22:00（年中無休）
+          </p>
+        </div>
+        <div class="footer-section">
+          <h4>お問い合わせ</h4>
+          <p>
+            <a href="https://lin.ee/GQDsqfQ">LINE公式アカウント</a><br>
+            <a href="https://www.instagram.com/medizero0101/">Instagram</a><br>
+            <a href="faq.html #form">お問い合わせフォーム</a><br>
+            <a href="faq.html #access">アクセス</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Medistudy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all animated elements
+    document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Header background change on scroll
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(255, 255, 255, 0.98)';
+      } else {
+        header.style.background = 'rgba(255, 255, 255, 0.95)';
+      }
+    });
+
+    // Progressive step reveal
+    let stepRevealTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(stepRevealTimeout);
+      stepRevealTimeout = setTimeout(() => {
+        const steps = document.querySelectorAll('.step-item');
+        steps.forEach((step, index) => {
+          const rect = step.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            setTimeout(() => {
+              step.classList.add('visible');
+            }, index * 200);
+          }
+        });
+      }, 100);
+    });
+  </script>
+</body>
+</html>
